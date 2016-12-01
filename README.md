@@ -63,7 +63,7 @@ or via `yarn`
 yarn add rx-aster
 ```
 
-Then, create build script and use it. Example (`require`s omitted):
+Then, create build script and use it.
 
 ```javascript
 aster.watch(['src/**/*.js', 'src/**/*.coffee', 'src/**/*.jsx'])
