@@ -1,0 +1,65 @@
+{
+  "name": "rx-aster",
+  "version": "0.1.0",
+  "description": "RxJS stream based AST operator API based on aster",
+  "author": "Mandricore",
+  "repository": "https://github.com/kristianmandrup/rx-aster.git",
+  "license": "MIT",
+  "keywords": [
+    "ast",
+    "javascript",
+    "transform",
+    "modify"
+  ],
+  "scripts": {
+    "dev": "npm run test -- --watch",
+    "test": "ava",
+    "lint": "standard",
+    "lint:fix": "standard --fix"
+  },
+  "ava": {
+    "files": [
+      "test/**/*.js"
+    ],
+    "source": [
+      "src/**/*.js",
+      "!dist/**/*"
+    ],
+    "concurrency": 5,
+    "failFast": true,
+    "tap": true,
+    "powerAssert": true,
+    "require": [
+      "babel-register"
+    ],
+    "babel": "inherit"
+  },
+  "main": "index.js",
+  "dependencies": {
+    "colors": "^1.1.2",
+    "es6-map": "^0.1.4",
+    "escodegen": "^1.8.1",
+    "esnext": "^3.0.6",
+    "esprima": "^3.1.1",
+    "estemplate": "^0.5.1",
+    "estraverse": "^4.2.0",
+    "gaze": "^0.5.1",
+    "glob": "*",
+    "grasp-equery": "^0.3.1",
+    "grasp-squery": "^0.3.0",
+    "minimatch": "^3.0.3",
+    "mkdirp": "^0.5.1",
+    "rx": "^4.1.0"
+  },
+  "devDependencies": {
+    "ava": "^0.17.0",
+    "babel-preset-es2017": "^6.16.0",
+    "chai": "*",
+    "escodegen": "^1.8.1",
+    "esprima": "^3.1.1",
+    "mocha": "*",
+    "rimraf": "*",
+    "rx": "^4.1.0",
+    "standard": "^8.6.0"
+  }
+}
