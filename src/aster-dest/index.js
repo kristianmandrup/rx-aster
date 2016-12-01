@@ -9,7 +9,7 @@ var path = require('path')
 var pathJoin = path.join
 var dirName = path.dirname
 
-function defaultDestinator(options) {
+function defaultDestinator (options) {
   return function (files) {
     files = options.generate(files)
 
