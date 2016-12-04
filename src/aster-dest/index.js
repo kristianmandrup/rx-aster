@@ -1,7 +1,8 @@
 'use strict'
 
 var Rx = require('rx')
-var asterGenerate = require('aster-generate')
+var asterGenerate = require('../').generate
+
 var writeFile = Rx.Observable.fromNodeCallback(require('fs').writeFile)
 var createPath = Rx.Observable.fromNodeCallback(require('mkdirp'))
 
