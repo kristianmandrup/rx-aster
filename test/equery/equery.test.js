@@ -1,7 +1,7 @@
 import test from 'ava'
 
 const Rx = require('rx')
-const equery = require('..')
+const equery = require('../../').equery
 const parse = require('esprima').parse
 const generate = require('escodegen').generate
 
