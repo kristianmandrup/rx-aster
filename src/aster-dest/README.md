@@ -20,7 +20,9 @@ aster.src([
 .map(plugin1(optionsForPlugin1))
 .map(plugin2(optionsForPlugin2))
 // ...
-.map(aster.dest('dist', {sourceMap: true}))
+.map(aster.dest('dist', {
+  sourceMap: true
+}))
 .subscribe(aster.runner);
 ```
 
@@ -43,26 +45,28 @@ Type: `Object`
 
 Allows customizing generator to be used. By default [aster-generate](https://github.com/asterjs/aster-generate) is used, passing `options` to create the `Observable` factory function.
 
-
-
 #### options.destinator
 
 Allows customization of the destinator function. By default the following is used. Note that `options.generate` will be the `generator` Obserable factory function (see `options.generator` above)
 
 ```js
 function defaultDestinator(options) {
-    return function (files) {
-        files = options.generate(files);
+  // files is an Observable
+  return function (files) {
+    files = options.generate(files);
 
-        return files
-            .flatMap(function (file) {
-                // ...
-            }
-            .flatMap(function (file) {
-                return writeFile(file.path, file.contents);
-            })
-            .zip(files, function (result, file) { return file });
-    }
+    return files
+      // http://reactivex.io/documentation/operators/flatmap.html
+      // transform the items emitted by an Observable into Observables, then flatten the emissions from
+      // those into a single Observable
+      .flatMap(function (file) {
+          // ...
+      }
+      .flatMap(function (file) {
+          return writeFile(file.path, file.contents);
+      })
+      .zip(files, function (result, file) { return file });
+  }
 }
 ```
 

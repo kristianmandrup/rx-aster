@@ -18,13 +18,13 @@ aster.src('src/**/*.js')
 .map(plugin2(optionsForPlugin2))
 // ...
 .subscribe(aster.runner({
-    onNext: (item) => {
-        console.log('>> %s'.yellow, item)
-    }
+  onNext: (item) => {
+    console.log('>> %s'.yellow, item)
+  }
 }));
 ```
 
-When you create an `Observable`, you always pass 3 functions in this order: 
+When you create an `Observable`, you always pass 3 functions in this order:
 - `successHandler`
 - `errorHandler`
 - `onCompleteHandler`

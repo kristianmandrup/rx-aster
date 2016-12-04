@@ -26,13 +26,13 @@ aster.src('src/**/*.js')
 .map(squery({
   'if[then=return][else=return]': function (node) {
     return {
-        type: 'ReturnStatement',
-        argument: {
-            type: 'ConditionalExpression',
-            test: node.test,
-            consequent: node.consequent.argument,
-            alternate: node.alternate.argument
-        }
+      type: 'ReturnStatement',
+      argument: {
+        type: 'ConditionalExpression',
+        test: node.test,
+        consequent: node.consequent.argument,
+        alternate: node.alternate.argument
+      }
     };
   }
   // , ...

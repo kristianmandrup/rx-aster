@@ -66,7 +66,11 @@ yarn add rx-aster
 Then, create build script and use it.
 
 ```javascript
-aster.watch(['src/**/*.js', 'src/**/*.coffee', 'src/**/*.jsx'])
+aster.watch([
+  'src/**/*.js',
+  'src/**/*.coffee',
+  'src/**/*.jsx'
+])
 .throttle(500)
 .map(changed(function (src) {
   return src.map(equery({
@@ -80,7 +84,34 @@ aster.watch(['src/**/*.js', 'src/**/*.coffee', 'src/**/*.jsx'])
 .subscribe(aster.runner);
 ```
 
-aster doesn't provide task runner - npm is already good one, and we don't want to reinvent the wheel. You can simply define every needed task as separate script, or use aster as part of existing builder as mentioned before.
+Using custom sources:
+
+```js
+const sources = ['var a = 1', 'var b = a + 2']
+
+const srcObserver = Rx.Observable.of(sources);
+const srcObserver2 = Rx.Observable.just(sources[0]);
+
+aster.src({
+  srcObserver
+})
+.map(equery({
+  'if ($cond) return $expr1; else return $expr2;': 'return <%= cond %> ? <%= expr1 %> : <%= expr2 %>'
+  // , ...
+}))
+.map(aster.dest((options) => {
+  // return a function that when run returns an Observable
+  return function(sinks) {
+    // do something with the sinks...
+    // ie. use incoming event streams from previous step (ie. .map(equery(...)), write to a destination
+    return sinks
+  }
+}))
+.subscribe(aster.runner({
+  onNext: (item) => {
+    console.log('>> %s'.yellow, item)
+  }
+}));
 
 ## Creating plugins
 

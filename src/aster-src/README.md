@@ -23,7 +23,7 @@ aster.src([
 .subscribe(aster.runner);
 ```
 
-`aster.src` returns [`Rx.Observable`](https://github.com/Reactive-Extensions/RxJS/blob/master/doc/api/core/observable.md) which, in order, emits single inner observable collection of file ASTs wrapped with custom `{type: 'File', program: ..., loc: {source: 'fileName.js'}}` node. 
+`aster.src` returns [`Rx.Observable`](https://github.com/Reactive-Extensions/RxJS/blob/master/doc/api/core/observable.md) which, in order, emits single inner observable collection of file ASTs wrapped with custom `{type: 'File', program: ..., loc: {source: 'fileName.js'}}` node.
 
 ## API
 
@@ -49,7 +49,7 @@ function (patterns, options) {
 }
 ```
 
-If you are observing source code that does not reside in files that can be filtered via the `patterns`, simply ignore and leave out this argument: 
+If you are observing source code that does not reside in files that can be filtered via the `patterns`, simply ignore and leave out this argument:
 
 `function (options) { ... }`
 
@@ -59,16 +59,16 @@ The default `Observable` factory function used:
 var readFile = Rx.Observable.fromNodeCallback(require('fs').readFile);
 
 function filesSrc(patterns, options) {
-    return glob(patterns, options).flatMap(function (path) {
-        var fullPath = resolvePath(options.cwd || '', path);
+  return glob(patterns, options).flatMap(function (path) {
+    var fullPath = resolvePath(options.cwd || '', path);
 
-        return readFile(fullPath, 'utf-8').map(function (contents) {
-            return {
-                path: path,
-                contents: contents
-            };
-        });
+    return readFile(fullPath, 'utf-8').map(function (contents) {
+      return {
+        path: path,
+        contents: contents
+      };
     });
+  });
 }
 ```
 
@@ -76,17 +76,22 @@ You can pass either a factory function or an Observable directly
 
 ```js
 function srcObserver(options) {
-    return Rx.Observable.of(options.sources);
+  return Rx.Observable.of(options.sources);
 }
 
 const sources = ['var a = 1', 'var b = a + 2']
 
+aster.src({
+  srcObserver,
+  sources,
+})
+
 // alternatively:
-// const srcObserver = Rx.Observable.of(options.sources);
+
+const srcObserver = Rx.Observable.of(sources);
 
 aster.src({
-    srcObserver,
-    sources,
+  srcObserver
 })
 ```
 
