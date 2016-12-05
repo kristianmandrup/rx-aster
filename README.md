@@ -63,12 +63,42 @@ or via `yarn`
 yarn add rx-aster
 ```
 
+Read the docs
+- [equery](http://www.graspjs.com/docs/equery/)
+- [squery](http://www.graspjs.com/docs/squery/)
+- [replace](http://www.graspjs.com/docs/replace/)
+
 - See [ESQuery API docs](https://github.com/mandricore/rx-aster/blob/master/docs/esquery%20api.md)
 - See [grasp sample queries](https://github.com/gratex/grasp-samples)
 - Read the blog articles
 [refactoring-javascript-with-grasp](http://www.graspjs.com/blog/2014/01/07/refactoring javascript with grasp)
 and [real life refactor examples](http://www.graspjs.com/blog/2014/02/09/refactoring-javascript-with-grasp-real-life-examples)
+
 - Check the tests in `tests` and make them run and work!
+
+### Example (squery)
+
+Putting a couple things we have learned together, here is the selector for an immediately-invoked function expression.
+
+These can take for form of:
+
+```
+(function(){ ... })();
+(function(){ ... }).call(...);
+(function(){ ... }).apply(...);
+The selector we use to match these is:
+```
+
+`call[callee=(func-exp, member[obj=func-exp][prop=(#call, #apply)])]`
+
+At the top level, in all cases we are matching a call. The `callee` (the function being called) of the call is either a function expression in the first case, or a member expression in the second and third cases.
+In those cases, the object that is being accessed is a function expression, and the property is either the
+identifier call in the second case, or apply in the third case.
+
+As this is a common pattern, you can simply use `iife` to match it instead.
+
+See the [javascript syntax](http://www.graspjs.com/docs/syntax-js/) for an overview of available
+selectors such as `func-dec` and `class-dec`.
 
 ### Creating a refactor pipeline
 
