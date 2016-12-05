@@ -7,9 +7,7 @@ let code = `function hello(x) {
 
 let expResult = `function hello(x) {
   console.log(x)
-}
-
-function goodbye(x) {
+} function goodbye(x) {
   console.log(x)
 }`
 

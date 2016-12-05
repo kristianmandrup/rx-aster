@@ -10,14 +10,14 @@ let expResult = `function goodbye(x) {
 }`
 
 const find = 'func-dec[id=#hello]'
-const replace = 'goodbye'
+const replace = 'function goodbye({{.params}}) {{.body}}'
 
 const replacer = grasp.replace('squery', find, replace)
 let result = replacer(code)
 
 const log = console.log
 
-test('replace function name', t => {
+test('rename function', t => {
   log('result', result)
   t.is(result, expResult)
 })

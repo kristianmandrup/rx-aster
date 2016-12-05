@@ -63,31 +63,37 @@ or via `yarn`
 yarn add rx-aster
 ```
 
+Check the tests in `/tests` folder and run them.
+The tests demonstrate how to:
+- select and remove/rename class, function and method by id
+- find a node and add a class, function or method after it
+
 Read the docs
 - [equery](http://www.graspjs.com/docs/equery/)
 - [squery](http://www.graspjs.com/docs/squery/)
 - [replace](http://www.graspjs.com/docs/replace/)
 
-- See [ESQuery API docs](https://github.com/mandricore/rx-aster/blob/master/docs/esquery%20api.md)
-- See [grasp sample queries](https://github.com/gratex/grasp-samples)
-- Read the blog articles
+Notice how the tests use selectors described in [javascript syntax](http://www.graspjs.com/docs/syntax-js/)
+
+- [ESQuery API docs](https://github.com/mandricore/rx-aster/blob/master/docs/esquery%20api.md)
+- [grasp sample queries](https://github.com/gratex/grasp-samples)
+- (optionally) read the blog articles
 [refactoring-javascript-with-grasp](http://www.graspjs.com/blog/2014/01/07/refactoring javascript with grasp)
 and [real life refactor examples](http://www.graspjs.com/blog/2014/02/09/refactoring-javascript-with-grasp-real-life-examples)
 
-- Check the tests in `tests` and make them run and work!
-
-### Example (squery)
+### Example (from squery)
 
 Putting a couple things we have learned together, here is the selector for an immediately-invoked function expression.
 
 These can take for form of:
 
-```
+```js
 (function(){ ... })();
 (function(){ ... }).call(...);
 (function(){ ... }).apply(...);
-The selector we use to match these is:
 ```
+
+The selector we use to match these is:
 
 `call[callee=(func-exp, member[obj=func-exp][prop=(#call, #apply)])]`
 

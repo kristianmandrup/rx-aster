@@ -4,10 +4,8 @@ import grasp from 'grasp'
 let code = `class Hello {
 }`
 
-let expResult = `class Hello{
-}
-
-class Goodbye {
+let expResult = `class Hello {
+} class Goodbye {
 }`
 
 const find = 'class-dec[id=#Hello]'

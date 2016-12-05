@@ -5,8 +5,6 @@ let code = `function hello(x) {
   console.log(x)
 }`
 
-let expResult = ``
-
 const find = 'func-dec[id=#hello]'
 const replace = ''
 
@@ -15,7 +13,7 @@ let result = replacer(code)
 
 const log = console.log
 
-test('replace function name', t => {
+test('remove function', t => {
   log('result', result)
   t.notRegex(result, /hello/, 'function hello removed')
 })

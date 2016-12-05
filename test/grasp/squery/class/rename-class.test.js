@@ -20,7 +20,7 @@ let code = `export default class Model {
 //   }
 // }`
 
-const find = 'class[id=#Model]'
+const find = 'class-dec[id=#Model]'
 const replace = 'class Control {{.body}}'
 
 const replacer = grasp.replace('squery', find, replace)
