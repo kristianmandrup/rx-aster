@@ -30,5 +30,5 @@ const log = console.log
 
 test('replace class name', t => {
   log('result', result)
-  t.regex(result, /Control/)
+  t.regex(result, /Control/, 'class renamed to Control')
 })
