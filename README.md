@@ -51,9 +51,6 @@ aster is completely modular and main package is just a centralized API wrapper f
 
 ## Usage
 
-Please see `ESQuery-api.md` in `/docs` for an overview of how to use the ESQuery API.
-You may also use [this branch](https://github.com/kristianmandrup/esquery/) with convenient shorthands.
-
 First, install `rx-aster` as a development dependency:
 
 ```shell
@@ -66,15 +63,24 @@ or via `yarn`
 yarn add rx-aster
 ```
 
-Then, create build script and use it.
+- See [ESQuery API docs](https://github.com/mandricore/rx-aster/blob/master/docs/esquery%20api.md)
+- See [grasp sample queries](https://github.com/gratex/grasp-samples)
+- Read the blog articles
+[refactoring-javascript-with-grasp](http://www.graspjs.com/blog/2014/01/07/refactoring javascript with grasp)
+and [real life refactor examples](http://www.graspjs.com/blog/2014/02/09/refactoring-javascript-with-grasp-real-life-examples)
+- Check the tests in `tests` and make them run and work!
+
+### Creating a refactor pipeline
+
+Create build script and use it.
 
 ```javascript
-aster.watch([
+aster.watch([ // watch these files for changes
   'src/**/*.js',
   'src/**/*.coffee',
   'src/**/*.jsx'
 ])
-.throttle(500)
+.throttle(500) // every 500ms
 .map(changed(function (src) {
   return src.map(equery({
     'if ($cond) return $expr1; else return $expr2;':
