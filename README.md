@@ -51,6 +51,9 @@ aster is completely modular and main package is just a centralized API wrapper f
 
 ## Usage
 
+Please see `ESQuery-api.md` in `/docs` for an overview of how to use the ESQuery API.
+You may also use [this branch](https://github.com/kristianmandrup/esquery/) with convenient shorthands.
+
 First, install `rx-aster` as a development dependency:
 
 ```shell
