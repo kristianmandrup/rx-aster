@@ -20,7 +20,7 @@
   },
   "ava": {
     "files": [
-      "test/grasp/squery/**/*.test.js"
+      "test/grasp/squery/class/module/*.test.js"
     ],
     "source": [
       "src/**/*.{js,jsx}",
