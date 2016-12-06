@@ -7,6 +7,8 @@ const codeWithClass = `class Hello {
   }
 }`
 
+const log = console.log
+
 const newOp = function (code) {
   return new operator.MethodOperator({ code: code || '' })
 }
@@ -18,8 +20,12 @@ const title = function (name) {
 }
 
 test(title('add'), t => {
-  const op = newOp()
+  const op = newOp(codeWithClass)
+  log('op', op)
+  op.clazz({name: 'Hello'})
   op.add({name: 'hello'})
+  log('result code', op.code)
+
   t.regex(op.code, /hello\(/, 'added method hello')
 })
 

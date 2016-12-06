@@ -1,13 +1,18 @@
 import CodeOperator from './code-operator'
 
 export default class MethodOperator extends CodeOperator {
-  constructor ({name, code}) {
+  constructor ({name, clazz, code}) {
     super({name, code})
+    this.clazz = clazz
     this.type = 'method'
   }
 
+  clazz ({ name }) {
+    this.clazz = name
+  }
+
   get findNode () {
-    return `method[key=#${this.name}]`
+    return `class-dec[id=#${this.asClass(this.clazz)}] method[key=#${this.name}]`
   }
 
   get renamedNode () {
@@ -16,7 +21,7 @@ export default class MethodOperator extends CodeOperator {
 
   // {{}} before or after?
   get addNode () {
-    return `${this.asMethod(this.name)} {
+    return `{{}} ${this.asMethod(this.name)} {
 }`
   }
 }

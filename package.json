@@ -20,7 +20,7 @@
   },
   "ava": {
     "files": [
-      "test/operator/class-operator.test.js"
+      "test/operator/method-operator.test.js"
     ],
     "source": [
       "src/**/*.{js,jsx}",
