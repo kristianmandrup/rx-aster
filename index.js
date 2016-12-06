@@ -1,1 +1,1 @@
-module.exports = require('./src/aster')
+module.exports = require('./src')

@@ -3,6 +3,7 @@ import _ from 'lodash'
 
 export default class CodeOperator {
   constructor ({code, name}) {
+    // console.log('CodeOperator:: code:', code, 'name:', name)
     this.code = code
     this.name = name
   }
@@ -16,21 +17,32 @@ export default class CodeOperator {
   }
 
   replaceCode ({ find, replace }) {
+    find = find || this.nodeFind
     const replacer = grasp.replace('squery', find, replace)
+    // console.log('replacer:', replacer, 'code:', this.code)
     this.code = replacer(this.code)
   }
 
+  insertCode ({ replace }) {
+    this.code = [this.code, replace].join('\n')
+  }
+
+
   removeNode () {
     this.replaceCode({
-      find: this.find,
       replace: ''
     })
   }
 
   renameNode () {
     this.replaceCode({
-      find: this.findNode,
-      replace: this.renamedNode
+      replace: this.nodeRename
+    })
+  }
+
+  addNode () {
+    this.insertCode({
+      replace: this.nodeAdd
     })
   }
 

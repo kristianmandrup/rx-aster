@@ -1,1 +1,4 @@
-module.exports = require('./aster')
+module.exports = {
+  aster: require('./aster'),
+  operator: require('./operator')
+}

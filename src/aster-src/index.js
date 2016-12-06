@@ -1,10 +1,11 @@
 'use strict'
 
+const aster = require('../aster')
 const Rx = require('rx')
 const glob = require('./glob')
 const readFile = Rx.Observable.fromNodeCallback(require('fs').readFile)
 const resolvePath = require('path').resolve
-const asterParse = require('../').parse
+const asterParse = aster.parse
 
 function filesSrc (patterns, options) {
   return glob(patterns, options).flatMap(function (path) {

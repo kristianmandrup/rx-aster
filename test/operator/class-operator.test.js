@@ -1,4 +1,4 @@
-import { ClassOperator } from '../operator'
+import { operator } from '../../'
 import test from 'ava'
 
 const codeWithClass = `class Hello {
@@ -7,8 +7,12 @@ const codeWithClass = `class Hello {
   }
 }`
 
+const log = console.log
+
+// log('operator', operator)
+
 const newOp = function (code) {
-  return new ClassOperator({ code: code || '' })
+  return new operator.ClassOperator({ code: code || '' })
 }
 
 const prefix = 'ClassOperator::'
@@ -18,8 +22,10 @@ const title = function (name) {
 }
 
 test(title('add'), t => {
-  const op = newOp()
+  let op = newOp()
+  log('op', op)
   op.add({name: 'Hello'})
+  log('result code', op.code)
   t.regex(op.code, /class Hello/, 'added class Hello')
 })
 

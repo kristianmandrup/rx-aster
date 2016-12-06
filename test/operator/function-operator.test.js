@@ -1,4 +1,4 @@
-import { FunctionOperator } from '../operator'
+import { operator } from '../../'
 import test from 'ava'
 
 const codeWithClass = `class Hello {
@@ -8,7 +8,7 @@ const codeWithClass = `class Hello {
 }`
 
 const newOp = function (code) {
-  return new FunctionOperator({ code: code || '' })
+  return new operator.FunctionOperator({ code: code || '' })
 }
 
 const prefix = 'FunctionOperator::'

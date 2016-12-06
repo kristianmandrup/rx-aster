@@ -20,7 +20,7 @@
   },
   "ava": {
     "files": [
-      "test/grasp/squery/class/module/*.test.js"
+      "test/operator/class-operator.test.js"
     ],
     "source": [
       "src/**/*.{js,jsx}",
