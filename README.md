@@ -166,6 +166,13 @@ aster.src({
 
 ## Code Operator
 
+Currently the operator includes the following:
+- `ClassOperator`
+- `MethodOperator`
+- `FunctionOperator`
+
+### ClassOperator example
+
 ```js
 const { operator } = require('rx-aster')
 const { ClassOperator } = operator
