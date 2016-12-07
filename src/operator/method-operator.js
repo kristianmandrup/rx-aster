@@ -50,8 +50,11 @@ export default class MethodOperator extends CodeOperator {
 
   // {{}} before or after?
   get nodeAdd () {
-    return `class ${this.className} {{.body | append "${this.methodName}() {
-}" }}`
+    return `class ${this.className} {{ .body }}`
+  }
+
+  get newMethod () {
+    return `${this.methodName}() {}`
   }
 
   addNode () {
