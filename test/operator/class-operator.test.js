@@ -24,9 +24,9 @@ const title = function (name) {
 test(title('add'), t => {
   let op = newOp()
   log('op', op)
-  op.add({name: 'Hello'})
+  op.add({name: 'Winner'})
   log('result code', op.code)
-  t.regex(op.code, /class Hello/, 'added class Hello')
+  t.regex(op.code, /class Winner/, 'added class Winner')
 })
 
 test(title('remove'), t => {

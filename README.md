@@ -112,7 +112,10 @@ selectors such as `func-dec` and `class-dec`.
 
 Create build script and use it.
 
-```javascript
+```js
+const rxa = require('rx-aster')
+const { aster } = rxa
+
 aster.watch([ // watch these files for changes
   'src/**/*.js',
   'src/**/*.coffee',
@@ -159,6 +162,30 @@ aster.src({
     console.log('>> %s'.yellow, item)
   }
 }));
+```
+
+## Code Operator
+
+```js
+const { operator } = require('rx-aster')
+const { ClassOperator } = operator
+
+const codeWithClass = `class Hello {
+  cool(x) {
+    console.log(x)
+  }
+}`
+
+const op = new ClassOperator({ code })
+
+// rename one class and add another
+let code = op
+  .rename({name: 'Hello', to: 'Goodbye'})
+  .add({name: 'Winner'})
+  .code
+
+console.log('Modified code', code)
+```
 
 ## Creating plugins
 
