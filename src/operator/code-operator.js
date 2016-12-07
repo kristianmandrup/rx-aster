@@ -19,29 +19,30 @@ export default class CodeOperator {
   replaceCode ({ find, replace }) {
     find = find || this.nodeFind
     const replacer = grasp.replace('squery', find, replace)
-    // console.log('replacer:', replacer, 'code:', this.code)
+    console.log('find:', find, 'replace:', replace, 'code:', this.code)
     this.code = replacer(this.code)
+    return this
   }
 
   insertCode ({ replace }) {
     this.code = [this.code, replace].join('\n')
+    return this
   }
 
-
   removeNode () {
-    this.replaceCode({
+    return this.replaceCode({
       replace: ''
     })
   }
 
   renameNode () {
-    this.replaceCode({
+    return this.replaceCode({
       replace: this.nodeRename
     })
   }
 
   addNode () {
-    this.insertCode({
+    return this.insertCode({
       replace: this.nodeAdd
     })
   }
@@ -49,20 +50,16 @@ export default class CodeOperator {
   rename ({ name, to }) {
     this.name = name || this.name
     this.to = to
-    this.renameNode()
+    return this.renameNode()
   }
 
   remove ({ name }) {
     this.name = name || this.name
-    this.removeNode()
+    return this.removeNode()
   }
 
   add ({ name }) {
     this.name = name || this.name
-    this.addNode()
-  }
-
-  at ({ clazz }) {
-    this.clazz = clazz
+    return this.addNode()
   }
 }

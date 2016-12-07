@@ -73,6 +73,8 @@ Read the docs
 - [squery](http://www.graspjs.com/docs/squery/)
 - [replace](http://www.graspjs.com/docs/replace/)
 
+Test [AST parsing](http://esprima.org/demo/parse.html) of your code
+
 Notice how the tests use selectors described in [javascript syntax](http://www.graspjs.com/docs/syntax-js/)
 
 - [ESQuery API docs](https://github.com/mandricore/rx-aster/blob/master/docs/esquery%20api.md)

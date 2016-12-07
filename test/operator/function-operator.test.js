@@ -14,7 +14,7 @@ const newOp = function (code) {
 const prefix = 'FunctionOperator::'
 const type = 'function'
 const title = function (name) {
-  return `${prefix} add ${type}`
+  return `${prefix} ${name} ${type}`
 }
 
 test(title('add'), t => {

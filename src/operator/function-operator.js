@@ -7,16 +7,16 @@ export default class FunctionOperator extends CodeOperator {
     this.type = 'function'
   }
 
-  get findNode () {
+  get nodeFind () {
     return `fun-dec[id=#${this.name}]`
   }
 
-  get renamedNode () {
+  get nodeRename () {
     return `function ${this.to} ({{.params}}) {{.body}}`
   }
 
   // {{}} before or after?
-  get addNode () {
+  get nodeAdd () {
     return `function ${this.name} (${this.args}) {
 }`
   }
