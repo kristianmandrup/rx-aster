@@ -58,9 +58,21 @@ export default class MethodOperator extends CodeOperator {
   }
 
   addNode () {
-    return this.replaceCode({
+    return this.replaceCodeFn({
       find: this.nodeFindClassBody,
-      replace: this.nodeAdd
+
+        // getRaw: a function which takes a node object and produces a string
+        // node: the node that was matched (and is being replaced)
+        // query: a function which queries using the same query engine as the original search, and using the matched node as the root
+        // named: an object containing any named matches
+      replaceFn: (getRaw, node, query, named) => {
+        var body = query('.body');
+        body.push({
+          type: 'Raw',
+          raw: this.newMethod
+        })
+        return getRaw(body)
+      }
     })
   }
 }

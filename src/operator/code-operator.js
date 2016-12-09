@@ -24,6 +24,12 @@ export default class CodeOperator {
     return this
   }
 
+  replaceCodeFn ({ find, replaceFn }) {
+    find = find || this.nodeFind
+    this.code = grasp.replace('squery', find, replaceFn, code)
+    return this
+  }
+
   insertCode ({ replace }) {
     this.code = [this.code, replace].join('\n')
     return this
