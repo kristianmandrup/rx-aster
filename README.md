@@ -1,4 +1,6 @@
 # rx-aster
+
+[![Greenkeeper badge](https://badges.greenkeeper.io/kristianmandrup/rx-aster.svg)](https://greenkeeper.io/)
 [![NPM version][npm-image]][npm-url]
 [![Build Status][travis-image]][travis-url]
 
